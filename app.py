@@ -19,13 +19,13 @@ name = st.selectbox(
 
 # # st.write(name)
 
-# # Return the row of the dataframe with the selected name
-# row = players.loc[players.Name == name].iloc[0]
+# Return the row of the dataframe with the selected name
+row = players.loc[players.Name == name].iloc[0]
 
-# # Convert row to standalone dataframe
-# player = players.loc[players.Name == name].iloc[0,1:].to_frame().T
+# Convert row to standalone dataframe
+player = players.loc[players.Name == name].iloc[0,1:].to_frame().T
 
-# # st.write(player)
+# st.write(player)
 
 # # Load model
 # model = pickle.load(open('Model.sav', 'rb'))
