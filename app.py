@@ -11,7 +11,10 @@ st.markdown('Season ending injuries are some of the most devastating for NBA pla
             I created this tool to identify NBA players at high risk for season-ending injuries. \
             Select a player and discover their current season predicted probability of season-ending injury.')
 
-players = pickle.load(open('CurrentPlayers.sav', 'rb'))
+# players = pickle.load(open('CurrentPlayers.sav', 'rb'))
+
+with open('CurrentPlayers.sav', 'rb') as file:
+    players = pickle.load(file)
 
 name = st.selectbox(
     'Select a player...',
