@@ -30,18 +30,18 @@ player = players.loc[players.Name == name].iloc[0,1:].to_frame().T
 # Load model
 model = pickle.load(open('Model.sav', 'rb'))
 
-# # Run predictions
-# pred = model.predict(player)[0]
-# proba = model.predict_proba(player)[0][1]
+# Run predictions
+pred = model.predict(player)[0]
+proba = model.predict_proba(player)[0][1]
 
-# # st.write(pred)
-# # st.write(proba)
+# st.write(pred)
+# st.write(proba)
 
-# # Sharing the predictions
-# if pred == 1:
-#     st.write(f"## {name} is at :red[high risk] of season-ending injury!")
-#     st.write(f"Predicted probability of season-ending injury: {proba*100:.2f} %")
+# Sharing the predictions
+if pred == 1:
+    st.write(f"## {name} is at :red[high risk] of season-ending injury!")
+    st.write(f"Predicted probability of season-ending injury: {proba*100:.2f} %")
 
-# else:
-#     st.write(f"## {name} is not at high risk of season-ending injury!")
-#     st.write(f"Predicted probability of season-ending injury: {proba*100:.2f} %")
+else:
+    st.write(f"## {name} is not at high risk of season-ending injury!")
+    st.write(f"Predicted probability of season-ending injury: {proba*100:.2f} %")
