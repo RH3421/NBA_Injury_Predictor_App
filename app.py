@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 import sklearn
+import joblib
 import pickle
 
 # Opening intro text
@@ -11,8 +12,10 @@ st.markdown('Season ending injuries are some of the most devastating for NBA pla
             I created this tool to identify NBA players at high risk for season-ending injuries. \
             Select a player and discover their current season predicted probability of season-ending injury.')
 
-with open('CurrentPlayers.sav', 'rb') as cp:
-    players = pickle.load(cp)
+# with open('CurrentPlayers.sav', 'rb') as cp:
+#     players = pickle.load(cp)
+
+players = joblib.load('CurrentPlayers.joblib')
 
 name = st.selectbox(
     'Select a player...',
@@ -31,8 +34,10 @@ player = players.loc[players.Name == name].iloc[0,1:].to_frame().T
 # Load model
 # model = pickle.load(open('Model.sav', 'rb'))
 
-with open('Model.sav', 'rb') as m:
-    model = pickle.load(m)
+# with open('Model.sav', 'rb') as m:
+#     model = pickle.load(m)
+
+model = joblib.load('Model.joblib')
 
 # Run predictions
 pred = model.predict(player)[0]
