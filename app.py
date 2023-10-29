@@ -27,8 +27,8 @@ player = players.loc[players.Name == name].iloc[0,1:].to_frame().T
 
 # st.write(player)
 
-# # Load model
-# model = pickle.load(open('Model.sav', 'rb'))
+# Load model
+model = pickle.load(open('Model.sav', 'rb'))
 
 # # Run predictions
 # pred = model.predict(player)[0]
