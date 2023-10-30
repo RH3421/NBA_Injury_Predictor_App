@@ -1,9 +1,14 @@
 # Imports
 import streamlit as st
 import pandas as pd
-import sklearn
+# import sklearn
 import joblib
 import pickle
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
 
 # Opening intro text
 st.title("Reducing NBA Injuries")
@@ -15,7 +20,9 @@ st.markdown('Season ending injuries are some of the most devastating for NBA pla
 # with open('CurrentPlayers.sav', 'rb') as cp:
 #     players = pickle.load(cp)
 
-players = joblib.load('CurrentPlayers.joblib')
+player_file = open('CurrentPlayers.joblib', 'rb')
+players = joblib.load(player_file)
+player_file.close()
 
 name = st.selectbox(
     'Select a player...',
@@ -37,7 +44,9 @@ player = players.loc[players.Name == name].iloc[0,1:].to_frame().T
 # with open('Model.sav', 'rb') as m:
 #     model = pickle.load(m)
 
-model = joblib.load('Model.joblib')
+model_file = open('Model.joblib', 'rb')
+model = joblib.load(model_file)
+model_file.close()
 
 # Run predictions
 pred = model.predict(player)[0]
