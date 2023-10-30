@@ -1,7 +1,6 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: osx-64
-_py-xgboost-mutex==2.0=cpu_0
 altair==5.1.2=pypi_0
 appnope==0.1.2=py38hecd8cb5_1001
 argon2-cffi==21.3.0=pyhd3eb1b0_0
