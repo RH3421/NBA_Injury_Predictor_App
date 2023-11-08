@@ -5,8 +5,6 @@ import pickle
 from sklearn.preprocessing import StandardScaler
 # from sklearn.ensemble import RandomForestClassifier
 
-
-
 # Opening intro text
 st.title("Reducing NBA Injuries")
 
@@ -23,9 +21,6 @@ name = st.selectbox(
     options = players)
 
 # # st.write(name)
-
-# Return the row of the selected name as standalone dataframe
-# row = players.loc[players.Name == name].iloc[0]
 
 # Return the row of the selected name as standalone dataframe
 player = players.loc[players.Name == name].iloc[0,1:].to_frame().T
