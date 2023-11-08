@@ -1,12 +1,10 @@
 # Imports
 import streamlit as st
 import pandas as pd
-# import sklearn
 import pickle
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+# from sklearn.ensemble import RandomForestClassifier
+
 
 
 # Opening intro text
@@ -26,13 +24,20 @@ name = st.selectbox(
 
 # # st.write(name)
 
-# Return the row of the dataframe with the selected name
-row = players.loc[players.Name == name].iloc[0]
+# Return the row of the selected name as standalone dataframe
+# row = players.loc[players.Name == name].iloc[0]
 
-# Convert row to standalone dataframe
+# Return the row of the selected name as standalone dataframe
 player = players.loc[players.Name == name].iloc[0,1:].to_frame().T
 
 # st.write(player)
+
+# Load scaler 
+with open('scale.sav', 'rb') as s:
+    scale = pickle.load(s)
+
+# Scale player data   
+player = pd.DataFrame(scale.transform(player), columns = player.columns.to_list())
 
 # Load model
 with open('Model.sav', 'rb') as m:
