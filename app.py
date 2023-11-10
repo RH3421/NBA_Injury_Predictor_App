@@ -48,8 +48,8 @@ proba = model.predict_proba(player)[0][1]
 # Sharing the predictions
 if pred == 1:
     st.write(f"## {name} is at :red[high risk] of season-ending injury!")
-    st.write(f"Predicted probability of season-ending injury: {proba*100:.2f} %")
+    st.write(f"Predicted probability of season-ending injury: {proba*100} %")
 
 else:
     st.write(f"## {name} is not at high risk of season-ending injury!")
-    st.write(f"Predicted probability of season-ending injury: {proba*100:.2f} %")
+    st.write(f"Predicted probability of season-ending injury: {proba*100} %")
