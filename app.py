@@ -35,7 +35,7 @@ with open('scale.sav', 'rb') as s:
 player = pd.DataFrame(scale.transform(player), columns = player.columns.to_list())
 
 # Load model
-with open('Model.sav', 'rb') as m:
+with open('EnsembleModel.sav', 'rb') as m:
     model = pickle.load(m)
 
 # Run predictions
